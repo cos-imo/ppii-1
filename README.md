@@ -1,4 +1,4 @@
-# PPII «Projet Pluridisciplinaire d'Informatique Intégrative» (2022-2023)
+# PPII «Projet Pluridisciplinaire d'Informatique Interne (2022-2023)
 
 Olivier Festor <<olivier.festor@telecomnancy.eu>>  
 Anne-Claure Heurtel <<anne-claire.heurtel@telecomnancy.eu>>
