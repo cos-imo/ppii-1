@@ -1,9 +1,8 @@
 
 body {
-    width: 600px;
+    width: 500px;
+    height: 1400px;
     margin: 0 auto;
-    background-color: #0fa701;
-    opacity: 0.15;
     padding: 0 px 20px 20px;
 
 
@@ -11,8 +10,88 @@ body {
 
 
   
+
+.map {
+	position: relative;
+	top: 50px;
+	right: -675px;
+	width: 500px;
+	margin-top: 0;
+	background: white;
+	padding: 10px;
+}
+
+.menu_util{
+	z-index: +9;
+	position : fixed;
+	top : 25px;
+	left: 175px;
+	text-decoration: none;
+	color: black;
+	font-size: 1.25vw;
+}
+
+.menu_util:hover{
+	position : fixed;
+	top : 25px;
+	border-style: solid;
+	border-color: white white green white;
+}
+
+.menu_prod{
+	z-index: +9;
+	position : fixed;
+	top : 25px;
+	left: 300px;
+	text-decoration: none;
+	color: black;
+	font-size: 1.25vw;
+}
+
+.menu_prod:hover{
+	position : fixed;
+	top : 25px;
+	border-style: solid;
+	border-color: white white green white;
+}
+
 .header {
-    margin: 0;
-    padding: 20px 0;
-    text-align: center;
-  }
+	z-index: +10;
+	position : fixed;
+	top: 0px;
+	left: 0px;
+	margin-top :0;
+	padding: 10px;
+	text-decoration: none;
+	color: black;
+	font-size: 2vw;	
+}
+
+.header:hover{
+	border-style: solid;
+	border-color: white white green white;
+}
+
+.box_header{
+	position: fixed;
+	z-index: +5;
+	left:0px;
+	top:0px;
+	width: 100vw;
+	height: 75px;
+	color: black;
+	background-color: white;
+	border: 1px solid green;
+}
+
+.degrade{
+	z-index: +10;
+	position: fixed;
+	top: 73px;
+	left: -5px;
+	background: linear-gradient(to right, white, 3%, lime, 15%,  green, 75%, lime, 97%, white);
+	width: 100vw;
+	height: 2px;
+	border-style: solid;
+	border-color: white;
+}
