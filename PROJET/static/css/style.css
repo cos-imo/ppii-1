@@ -95,3 +95,55 @@ body {
 	border-style: solid;
 	border-color: white;
 }
+
+.stats{
+	position: absolute;
+	font-size: 85px;
+	top:70px;
+	right: 550px;
+}
+
+.stat_info{
+	position: absolute;
+	right: 550px;
+	top: 155px;
+}
+
+.stats2{
+	position: absolute;
+	font-size: 85px;
+	top:170px;
+	right: 550px;
+}
+
+.stat_info2{
+	position: absolute;
+	right: 550px;
+	top: 255px;
+}
+
+.stats3{
+	position: absolute;
+	font-size: 85px;
+	top:270px;
+	right: 550px;
+}
+
+.stat_info3{
+	position: absolute;
+	right: 550px;
+	top: 355px;
+}
+
+.stats4{
+	position: absolute;
+	font-size: 85px;
+	top:370px;
+	right: 550px;
+}
+
+.stat_info4{
+	position: absolute;
+	right: 550px;
+	top: 455px;
+}
