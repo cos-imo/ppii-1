@@ -1,10 +1,15 @@
+@font-face {
+	font-family: farmer;
+	src: url(farmer.ttf);
+}
+
 
 body {
     width: 500px;
     height: 1400px;
     margin: 0 auto;
-    padding: 0 px 20px 20px;
-
+    padding: 0px 20px 20px;
+    background: #E9FABC;
 
   }
 
@@ -17,7 +22,7 @@ body {
 	right: -675px;
 	width: 500px;
 	margin-top: 0;
-	background: white;
+	background: #E9FABC;
 	padding: 10px;
 }
 
@@ -35,7 +40,7 @@ body {
 	position : fixed;
 	top : 25px;
 	border-style: solid;
-	border-color: white white green white;
+	border-color: #ABC664 #ABC664 green #ABC664;
 }
 
 .menu_prod{
@@ -52,7 +57,7 @@ body {
 	position : fixed;
 	top : 25px;
 	border-style: solid;
-	border-color: white white green white;
+	border-color: #ABC664  #ABC664 green #ABC664;
 }
 
 .header {
@@ -69,7 +74,7 @@ body {
 
 .header:hover{
 	border-style: solid;
-	border-color: white white green white;
+	border-color: #ABC664  #ABC664 green #ABC664;
 }
 
 .box_header{
@@ -80,7 +85,7 @@ body {
 	width: 100vw;
 	height: 75px;
 	color: black;
-	background-color: white;
+	background-color: #ABC664;
 	border: 1px solid green;
 }
 
@@ -101,12 +106,14 @@ body {
 	font-size: 85px;
 	top:70px;
 	right: 550px;
+	font-family: farmer, serif;
 }
 
 .stat_info{
 	position: absolute;
 	right: 550px;
 	top: 155px;
+	font-family: farmer, Helvetica, serif;
 }
 
 .stats2{
@@ -114,12 +121,14 @@ body {
 	font-size: 85px;
 	top:170px;
 	right: 550px;
+	font-family: farmer, serif;
 }
 
 .stat_info2{
 	position: absolute;
 	right: 550px;
 	top: 255px;
+	font-family: farmer, Helvetica, serif;
 }
 
 .stats3{
@@ -127,12 +136,14 @@ body {
 	font-size: 85px;
 	top:270px;
 	right: 550px;
+	font-family: farmer, serif;
 }
 
 .stat_info3{
 	position: absolute;
 	right: 550px;
 	top: 355px;
+	font-family: farmer, Helvetica, serif;
 }
 
 .stats4{
@@ -140,10 +151,12 @@ body {
 	font-size: 85px;
 	top:370px;
 	right: 550px;
+	font-family: farmer, serif
 }
 
 .stat_info4{
 	position: absolute;
 	right: 550px;
 	top: 455px;
+	font-family: farmer, serif;
 }
