@@ -25,12 +25,6 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
-@app.route('/students', methods=['GET','POST'])
-def all_students():
-    r = get_db().cursor()
-    r.execute("select lien,nom,nb_utilisation from liens")
-    return render_template('page_test.html',liste=r.fetchall())
-
 @app.route('/style.css')
 def return_css():
     return render_template('static/css/style.css')
@@ -42,6 +36,17 @@ def main():
     r.execute("SELECT body FROM messages")
     return render_template('main.html',liste=r.fetchall())
 
-
+@app.route("/inscription", methods=['GET','POST'])
+def insc():
+    msg = ''
+    if request.method == 'POST':
+        print("ok")
+        nom = request.form.get('user_firstname')
+        prenom = request.form.get('user_name')
+        conn = get_db()
+        conn.execute('INSERT INTO test VALUES(nom,prenom)', (username, ))
+        conn().commit()
+        conn.close()
+    return render_template("inscription.html")
 
 app.run(host='localhost', port=5000)
