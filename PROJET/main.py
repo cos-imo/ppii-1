@@ -4,13 +4,7 @@ import sqlite3
 app = Flask(__name__)
 
 
-from flask import Flask, render_template, g, request
-import sqlite3
-app = Flask(__name__)
-
 DATABASE = 'project.db'
-
-app = Flask(__name__)
 
 def get_db():
             
@@ -38,6 +32,7 @@ def main():
 
 @app.route("/inscription", methods=['GET','POST'])
 def insc():
+    
     msg = ''
     if request.method == 'POST':
         print("ok")
@@ -47,6 +42,6 @@ def insc():
         conn.execute('INSERT INTO test VALUES(nom,prenom)', (username, ))
         conn().commit()
         conn.close()
-    return render_template("inscription.html")
+    
 
 app.run(host='localhost', port=5000)
