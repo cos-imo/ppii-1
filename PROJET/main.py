@@ -46,5 +46,14 @@ def insc():
         print('please fill out the form')
     return render_template('inscription.html')
     
+@app.route("/connexion", methods=['GET','POST'])
+def connexion_page():
+    msg=''
+    if request.method == 'POST' and request.form.get('name') and request.form.get('password'):
+         r = get_db().cursor()
+         r.execute("select pass from test where nom=(?)",request.form.get('name'))
+         print(liste=r.fetchall())
+
+    return render_template("connexion.html")
 
 app.run(host='localhost', port=5000)
