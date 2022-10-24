@@ -33,7 +33,7 @@ def main():
 @app.route("/inscription", methods=['GET','POST'])
 def insc():
     msg = ''
-    if request.method == 'POST':
+    if request.method == 'POST' and request.form.get('first_name') and request.form.get('name'):
         print("ok")
         nom = request.form.get('first_name')
         prenom = request.form.get('name')
@@ -42,6 +42,8 @@ def insc():
         cur.execute('INSERT INTO test VALUES(?,?)', (nom,prenom))
         conn.commit()
         conn.close()
+    else:
+        print('please fill out the form')
     return render_template('inscription.html')
     
 
