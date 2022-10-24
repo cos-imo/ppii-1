@@ -32,16 +32,16 @@ def main():
 
 @app.route("/inscription", methods=['GET','POST'])
 def insc():
-    
     msg = ''
     if request.method == 'POST':
         print("ok")
         nom = request.form.get('user_firstname')
         prenom = request.form.get('user_name')
         conn = get_db()
-        conn.execute('INSERT INTO test VALUES(nom,prenom)', (username, ))
+        conn.execute('INSERT INTO test VALUES(?,?)', (nom,prenom))
         conn().commit()
         conn.close()
+    return render_template('inscription.html')
     
 
 app.run(host='localhost', port=5000)
