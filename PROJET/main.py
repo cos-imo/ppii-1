@@ -35,11 +35,12 @@ def insc():
     msg = ''
     if request.method == 'POST':
         print("ok")
-        nom = request.form.get('user_firstname')
-        prenom = request.form.get('user_name')
+        nom = request.form.get('first_name')
+        prenom = request.form.get('name')
         conn = get_db()
-        conn.execute('INSERT INTO test VALUES(?,?)', (nom,prenom))
-        conn().commit()
+        cur = conn.cursor()
+        cur.execute('INSERT INTO test VALUES(?,?)', (nom,prenom))
+        conn.commit()
         conn.close()
     return render_template('inscription.html')
     
