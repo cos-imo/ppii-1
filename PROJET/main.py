@@ -1,5 +1,6 @@
 from flask import *
 import sqlite3
+import hashlib
 
 app = Flask(__name__)
 
@@ -37,9 +38,11 @@ def insc():
         print("ok")
         nom = request.form.get('first_name')
         prenom = request.form.get('name')
+        mdp=bytes(request.form.get('password'),'utf-8')
         conn = get_db()
         cur = conn.cursor()
-        cur.execute('INSERT INTO test VALUES(?,?)', (nom,prenom))
+        mass=hashlib.sha256(mdp).hexdigest()
+        cur.execute('INSERT INTO test VALUES(?,?)', (nom,mass))
         conn.commit()
         conn.close()
     else:
@@ -51,8 +54,9 @@ def connexion_page():
     msg=''
     if request.method == 'POST' and request.form.get('name') and request.form.get('password'):
          r = get_db().cursor()
-         r.execute("select pass from test where nom=(?)",request.form.get('name'))
-         print(liste=r.fetchall())
+         nom=request.form.get('name')
+         r.execute("select pass from test where nom=?",(nom,))
+         print(r.fetchall())
 
     return render_template("connexion.html")
 
