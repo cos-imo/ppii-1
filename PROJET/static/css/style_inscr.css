@@ -147,15 +147,99 @@ body {
 	color: black;
 }
 
-.user_password_label{
+.user_firstname_label{
 	position: relative;
 	top: 200px;
 	font-size:1.5vw;
 }
 
-.password_textbox{
+.firstname_textbox{
 	position: relative;
 	top: 225px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.firstname_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+.firstname_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.user_email_label{
+	position: relative;
+	top: 237px;
+	font-size:1.5vw;
+}
+
+.email_textbox{
+	position: relative;
+	top: 250px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.email_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+.email_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.user_phone_label{
+	position: relative;
+	top: 280px;
+	font-size:1.5vw;
+}
+
+.phone_textbox{
+	position: relative;
+	top: 300px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.phone_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+.phone_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.user_password_label{
+	position: relative;
+	top: 325px;
+	font-size:1.5vw;
+}
+
+.password_textbox{
+	position: relative;
+	top: 350px;
 	background-color: #E9FABC;
 	text-align: center;
 	border: none;
@@ -170,6 +254,34 @@ body {
 }
 
 .password_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.user_password2_label{
+	position: relative;
+	top: 375px;
+	font-size:1.5vw;
+}
+
+.password2_textbox{
+	position: relative;
+	top: 400px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.password2_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+.password2_textbox:focus{
 	border: solid 2px;
 	border-color:  #E9FABC #E9FABC green #E9FABC;
 	color: black;
