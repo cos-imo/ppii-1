@@ -118,62 +118,69 @@ body {
 	border-color: white;
 }
 
-.stats{
-	position: absolute;
-	font-size: 85px;
-	top:70px;
-	right: 550px;
-	font-family: farmer, serif;
+.username_label{
+	position: relative;
+	top: 150px;
+	font-size: 1.5vw;
 }
 
-.stat_info{
-	position: absolute;
-	right: 550px;
-	top: 155px;
-	font-family: farmer, Helvetica, serif;
+.name_textbox{
+	position: relative;
+	top: 175px;
+	text-align: center;
+	background-color: #E9FABC;
+	border: none;
+	color:black;
+	outline: none;
+	font-size:1.125vw;
 }
 
-.stats2{
-	position: absolute;
-	font-size: 85px;
-	top:170px;
-	right: 550px;
-	font-family: farmer, serif;
+.name_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
 }
 
-.stat_info2{
-	position: absolute;
-	right: 550px;
-	top: 255px;
-	font-family: farmer, Helvetica, serif;
+.name_textbox:hover{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
 }
 
-.stats3{
-	position: absolute;
-	font-size: 85px;
-	top:270px;
-	right: 550px;
-	font-family: farmer, serif;
+.user_password_label{
+	position: relative;
+	top: 200px;
+	font-size:1.5vw;
 }
 
-.stat_info3{
-	position: absolute;
-	right: 550px;
-	top: 355px;
-	font-family: farmer, Helvetica, serif;
+.password_textbox{
+	position: relative;
+	top: 225px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
 }
 
-.stats4{
-	position: absolute;
-	font-size: 85px;
-	top:370px;
-	right: 550px;
-	font-family: farmer, serif
+.password_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
 }
 
-.stat_info4{
-	position: absolute;
-	right: 550px;
-	top: 455px;
-	font-family: farmer, serif;
+.password_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+
+.submit_btn{
+	position: relative;
+	top: 475px;
+	background-color: #E9FABC;
+	border-radius: 8px;
+	color: green;
+	border-color: green;
 }

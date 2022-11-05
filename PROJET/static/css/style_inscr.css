@@ -1,0 +1,298 @@
+@font-face {
+	font-family: farmer;
+	src: url(farmer.ttf);
+}
+
+
+body {
+    width: 500px;
+    height: 1400px;
+    margin: 0 auto;
+    padding: 0px 20px 20px;
+    background: #E9FABC;
+
+  }
+
+
+  
+
+.map {
+	position: relative;
+	top: 50px;
+	right: -675px;
+	width: 500px;
+	margin-top: 0;
+	background: #E9FABC;
+	padding: 10px;
+}
+
+.menu_util{
+	z-index: +9;
+	position : fixed;
+	top : 25px;
+	left: 175px;
+	text-decoration: none;
+	color: black;
+	font-size: 1.25vw;
+}
+
+.menu_util:hover{
+	position : fixed;
+	top : 25px;
+	border-style: solid;
+	border-color: #ABC664 #ABC664 green #ABC664;
+}
+
+.menu_prod{
+	z-index: +9;
+	position : fixed;
+	top : 25px;
+	left: 300px;
+	text-decoration: none;
+	color: black;
+	font-size: 1.25vw;
+}
+
+.menu_prod:hover{
+	position : fixed;
+	top : 25px;
+	border-style: solid;
+	border-color: #ABC664  #ABC664 green #ABC664;
+}
+
+.contact{
+	z-index: +9;
+	position : fixed;
+	top : 25px;
+	right: 0px;
+	text-decoration: none;
+	color: black;
+	font-size: 1.25vw;
+}
+
+.contact:hover{
+	position : fixed;
+	top : 25px;
+	border-style: solid;
+	border-color: #ABC664  #ABC664 green #ABC664;
+}
+
+.header {
+	z-index: +10;
+	position : fixed;
+	top: 0px;
+	left: 0px;
+	margin-top :0;
+	padding: 10px;
+	text-decoration: none;
+	color: black;
+	font-size: 2vw;	
+}
+
+.header:hover{
+	border-style: solid;
+	border-color: #ABC664  #ABC664 green #ABC664;
+}
+
+.box_header{
+	position: fixed;
+	z-index: +5;
+	left:0px;
+	top:0px;
+	width: 100vw;
+	height: 75px;
+	color: black;
+	background-color: #ABC664;
+	border: 1px solid green;
+}
+
+.degrade{
+	z-index: +10;
+	position: fixed;
+	top: 73px;
+	left: -5px;
+	background: linear-gradient(to right, white, 3%, lime, 15%,  green, 75%, lime, 97%, white);
+	width: 100vw;
+	height: 2px;
+	border-style: solid;
+	border-color: white;
+}
+
+.username_label{
+	position: relative;
+	top: 150px;
+	font-size: 1.5vw;
+}
+
+.name_textbox{
+	position: relative;
+	top: 175px;
+	text-align: center;
+	background-color: #E9FABC;
+	border: none;
+	color:black;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.name_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.name_textbox:hover{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.user_firstname_label{
+	position: relative;
+	top: 200px;
+	font-size:1.5vw;
+}
+
+.firstname_textbox{
+	position: relative;
+	top: 225px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.firstname_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+.firstname_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.user_email_label{
+	position: relative;
+	top: 237px;
+	font-size:1.5vw;
+}
+
+.email_textbox{
+	position: relative;
+	top: 250px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.email_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+.email_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.user_phone_label{
+	position: relative;
+	top: 280px;
+	font-size:1.5vw;
+}
+
+.phone_textbox{
+	position: relative;
+	top: 300px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.phone_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+.phone_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.user_password_label{
+	position: relative;
+	top: 325px;
+	font-size:1.5vw;
+}
+
+.password_textbox{
+	position: relative;
+	top: 350px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.password_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+.password_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+.user_password2_label{
+	position: relative;
+	top: 375px;
+	font-size:1.5vw;
+}
+
+.password2_textbox{
+	position: relative;
+	top: 400px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.password2_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+.password2_textbox:focus{
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+	color: black;
+}
+
+
+.submit_btn{
+	position: relative;
+	top: 475px;
+	background-color: #E9FABC;
+	border-radius: 8px;
+	color: green;
+	border-color: green;
+}
