@@ -44,15 +44,9 @@ def main():
 
 #####################################################################################################################
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-app.run(host='localhost', port=5000)
 
 
-#test 12
-=======
-=======
->>>>>>> origin/cosimo
+
 #Renders insciption page
 
 @app.route("/inscription", methods=['GET','POST'])
@@ -91,7 +85,4 @@ def connexion_page():
     return render_template("connexion.html")
 
 app.run(host='localhost', port=5000)
-<<<<<<< HEAD
->>>>>>> origin/cosimo
-=======
->>>>>>> origin/cosimo
+
