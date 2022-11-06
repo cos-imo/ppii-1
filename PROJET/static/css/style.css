@@ -5,13 +5,13 @@
 
 
 body {
-    width: 500px;
-    height: 1400px;
+    width: 100vw;
+    height: 100vh;
     margin: 0 auto;
     padding: 0px 20px 20px;
-    background: #E9FABC;
-
-  }
+    /*background: #E9FABC;*/
+    background: no-repeat center/100% url("../../images/verger_1.jpg")
+}
 
 
   
@@ -118,62 +118,4 @@ body {
 	border-color: white;
 }
 
-.stats{
-	position: absolute;
-	font-size: 85px;
-	top:70px;
-	right: 550px;
-	font-family: farmer, serif;
-}
 
-.stat_info{
-	position: absolute;
-	right: 550px;
-	top: 155px;
-	font-family: farmer, Helvetica, serif;
-}
-
-.stats2{
-	position: absolute;
-	font-size: 85px;
-	top:170px;
-	right: 550px;
-	font-family: farmer, serif;
-}
-
-.stat_info2{
-	position: absolute;
-	right: 550px;
-	top: 255px;
-	font-family: farmer, Helvetica, serif;
-}
-
-.stats3{
-	position: absolute;
-	font-size: 85px;
-	top:270px;
-	right: 550px;
-	font-family: farmer, serif;
-}
-
-.stat_info3{
-	position: absolute;
-	right: 550px;
-	top: 355px;
-	font-family: farmer, Helvetica, serif;
-}
-
-.stats4{
-	position: absolute;
-	font-size: 85px;
-	top:370px;
-	right: 550px;
-	font-family: farmer, serif
-}
-
-.stat_info4{
-	position: absolute;
-	right: 550px;
-	top: 455px;
-	font-family: farmer, serif;
-}
