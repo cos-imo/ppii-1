@@ -130,12 +130,18 @@ body {
 }
 
 
+.inscription::before{
+	content: "\A";
+	white-space: pre;
+}
+
 .inscription{
+	margin-top: 0.25rem;
 	color:#FFF;
 }
 
 .inscription::after, .inscription::before{
-	border: 3px solid #FFF;
+	border: 3px solid #ABD664;
 	content: "";
 	position: absolute;
 	width: calc(200px - 6px);
@@ -152,4 +158,36 @@ body {
 
 .inscription:hover::before{
 	transform: translate(5px,5px);
+}
+
+.annonce-container{
+	position: relative;
+	width: max-content;
+}
+
+
+.annonce-titre{
+	font-size:3rem;
+	position: relative;
+}
+
+.annonce-titre::before, .annonce-titre::after{
+	content: "";
+	position: absolute;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.annonce-titre::before{
+	background: no-repeat center url("../../images/verger_1.jpg");
+	background-size: 100vw;
+	animation:  test 4s steps(14) forwards;
+}
+
+@keyframes test{
+	to {
+		left: 100%;
+	}
 }
