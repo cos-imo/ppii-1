@@ -16,16 +16,6 @@ body {
 
   
 
-.map {
-	position: relative;
-	top: 50px;
-	right: -675px;
-	width: 500px;
-	margin-top: 0;
-	background: #E9FABC;
-	padding: 10px;
-}
-
 .menu_util{
 	z-index: +9;
 	position : fixed;
@@ -119,3 +109,47 @@ body {
 }
 
 
+.container{
+	height:100%;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.buttons{
+	display:flex;
+	flex-direction: column;
+}
+
+.btn{
+	text-decoration: none;
+	padding: 20px 50px;
+	font-size: 1.25rem;
+	position: relative;
+	margin: 32px;
+}
+
+
+.inscription{
+	color:#FFF;
+}
+
+.inscription::after, .inscription::before{
+	border: 3px solid #FFF;
+	content: "";
+	position: absolute;
+	width: calc(200px - 6px);
+	height: calc(60px - 6px);
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: transform 0.3s ease;
+}
+
+.inscription:hover::after{
+	transform: translate(-5px, -5px);
+}
+
+.inscription:hover::before{
+	transform: translate(5px,5px);
+}
