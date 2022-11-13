@@ -88,3 +88,7 @@ app.run(host='localhost', port=5000)
 @app.route("/images/verger_1.jpg")
 def renvoyer_bg():
     return send_file("ressources/images/verger_1.jpg")
+
+@app.route("/images/about")
+def renvoyer_about():
+    return send_file("ressources/images/about_logo")

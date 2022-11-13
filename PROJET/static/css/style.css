@@ -112,6 +112,7 @@ body {
 .container{
 	height:100%;
 	display:flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
@@ -127,6 +128,7 @@ body {
 	font-size: 1.25rem;
 	position: relative;
 	margin: 32px;
+	order:2;
 }
 
 
@@ -160,15 +162,30 @@ body {
 	transform: translate(5px,5px);
 }
 
-.annonce-container{
+
+.espace_sous_titre_boutons{
+	height: 10vh;
+}
+
+.terminal_bg{
+	border: solid 10px black;
 	position: relative;
+	width: 2vw;
+	height: 2vh;
+}
+
+.annonce-container{
+/*	position: relative;*/
 	width: max-content;
 }
 
 
 .annonce-titre{
-	font-size:3rem;
+	color:white;
+	font-size:5rem;
+	font-family: monospace;
 	position: relative;
+	order: 0;
 }
 
 .annonce-titre::before, .annonce-titre::after{
@@ -181,13 +198,30 @@ body {
 }
 
 .annonce-titre::before{
-	background: no-repeat center url("../../images/verger_1.jpg");
+	background-color: black;
 	background-size: 100vw;
-	animation:  test 4s steps(14) forwards;
+	animation:  test 4s steps(15) forwards;
+}
+
+.sous-titre{
+	color: white;
+	font-size: 3vh;
 }
 
 @keyframes test{
 	to {
 		left: 100%;
 	}
+}
+
+.logo_a_propos{
+	width: 2vw;
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
 }
