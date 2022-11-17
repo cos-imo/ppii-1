@@ -13,9 +13,6 @@ body {
     background: no-repeat center/100% url("../../images/verger_1.jpg")
 }
 
-
-  
-
 .menu_util{
 	z-index: +9;
 	position : fixed;
@@ -214,6 +211,14 @@ body {
 	}
 }
 
+.terminal_bg{
+	width: 10px;
+	height: 50px;
+	color: black;
+	z-index: 100;
+	border: 50px solid purple;
+}
+
 .logo_a_propos{
 	width: 2vw;
 }
@@ -221,7 +226,12 @@ body {
 .footer {
 	position: fixed;
 	left: 0;
-	bottom: 0;
+	top: 92vh;
 	width: 100%;
 	text-align: center;
+	transition: transform .2s;
+}
+
+.footer:hover{
+	transform: scale(2);
 }
