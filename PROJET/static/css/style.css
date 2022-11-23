@@ -214,7 +214,7 @@ body {
 .terminal_bg{
 	width: 10px;
 	height: 50px;
-	color: black;
+	background: b;
 	z-index: 100;
 	border: 50px solid purple;
 }
