@@ -1,11 +1,32 @@
+"""
+AVANT DE CODER:
+-> Obligatoire, tout le monde doit utiliser vscode pour que les json de formattage de code fonctionnent
+-> installer l'extension autopep8 pour pas avoir un git diff lisible
+-> installer l'exentsion prettier pour avoir un code lisible
+-> mettre des rangée de # pour séparer les root
+-> commentez votre code pour le rendre lisisble par les autres
+-> utilisez des noms de variables explicites éventuellement réutiliser le même nom si celà désigne la même chose
+-> ne vous inquiétez pas à la sauvegarde le code doit s'auto formater
+-> aérez votre code
+MERCI DE RESPECTER CES CONSIGNES
+"""
+
+
+# Imports
+
 from flask import *
 import sqlite3
 import hashlib
 
+
+# Initialisation de l'application
+
 app = Flask(__name__)
 
-#####################################################################################################################
+
 # DB gestion
+
+# Connexion à la DB
 
 DATABASE = 'project.db'
 
@@ -17,7 +38,7 @@ def get_db():
         db = g._database = sqlite3.connect(DATABASE)
     return db
 
-# Cut the connection to the database
+# Fermeture de la DB
 
 
 @app.teardown_appcontext
@@ -26,14 +47,11 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
-#####################################################################################################################
-
-
-@app.route('/style.css')
-def return_css():
-    return render_template('static/css/style.css')
 
 #####################################################################################################################
+#                                             Code de l'application                                                 #
+#####################################################################################################################
+
 
 # Renders main page
 
@@ -52,7 +70,6 @@ def main():
 
 @app.route("/inscription", methods=['GET', 'POST'])
 def insc():
-    msg = ''
     if request.method == 'POST' and request.form.get('first_name') and request.form.get('name'):
         print("ok")
         nom = request.form.get('first_name')
@@ -71,12 +88,12 @@ def insc():
 
 #####################################################################################################################
 
+
 # Renders connection page
 
 
 @app.route("/connexion", methods=['GET', 'POST'])
 def connexion_page():
-    msg = ''
     if request.method == 'POST' and request.form.get('name') and request.form.get('password'):
         r = get_db().cursor()
         nom = request.form.get('name')
@@ -89,11 +106,31 @@ def connexion_page():
 app.run(host='localhost', port=5000)
 
 
-@app.route("/images/verger_1.jpg")
-def renvoyer_bg():
-    return send_file("ressources/images/verger_1.jpg")
+#####################################################################################################################
+#                                  Merci de mettre ici vos routes de test éventuelles                               #
+#####################################################################################################################
 
 
-@app.route("/images/about")
-def renvoyer_about():
-    return send_file("ressources/images/about_logo")
+#####################################################################################################################
+
+# Justifiez la fonction, fonction de test ou je sais pas quoi
+
+# @app.route('/style.css')
+# def return_css():
+#     return render_template('static/css/style.css')
+
+#####################################################################################################################
+
+
+# @app.route("/images/verger_1.jpg")
+# def renvoyer_bg():
+#     return send_file("ressources/images/verger_1.jpg")
+
+
+#####################################################################################################################
+
+# @app.route("/images/about")
+# def renvoyer_about():
+#     return send_file("ressources/images/about_logo")
+
+#####################################################################################################################
