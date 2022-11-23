@@ -6,9 +6,7 @@
     <title>Page d'accueil</title>
   </head>
   <body>
-    <a class=" header" href="main.html">Accueil</a>
-
-	<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d21080.63173391124!2d6.1503983!3d48.6657325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1666455290640!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <a class=" header" href="/">Accueil</a>
 
 	<a class="menu_util" href="utlisateur.html">Utilisateur</a>
 	<a class="menu_prod" href="producteur.html">Producteur</a>
@@ -17,25 +15,23 @@
 	
 	<div class="degrade"></div>
 
-	<div class="stats">445.21€</div>
-	<div class="stat_info">blabla on s'en fout c'est pas vraie stat</div>
-
-	<div class="stats2">128kg</div>
-	<div class="stat_info2">blabla on s'en fout c'est pas vraie stat</div>
-
-	<div class="stats3">130km</div>
-	<div class="stat_info3">blabla on s'en fout c'est pas vraie stat</div>
-
-	<div class="stats4">MERCI</div>
-	<div class="stat_info4">Au nom de l'agriculture</div>
-
-	<div class="messagerie-titre">Messagerie</div>
-
-	<div class="contact">Contactez-nous</div>
-
-	{% for message in liste %}
-			{{ message }}
-	{% endfor %}
+	<div class="container">
+		<div class="annonce-container">
+			<div class="terminal-bg">hello test</div>
+			<div class="annonce-titre">>La technologie</div><br>
+			</div>
+			<div class="espace_titre_sous_titre"></div>
+			<div class="sous-titre">au service de la nature</div><br>
+		<div class="espace_sous_titre_boutons"></div>
+		<div class="boutons">
+			<a href="connexion" class="btn inscription">Connexion</a>
+			<a href="inscription" class="btn inscription">Inscription</a>
+		</div>
+	</div>
+	<div  class="footer">
+		<img class="logo_a_propos" src="images/about" href="apropos">
+		<div class="APropos_titre" href="apropos">A propos de TéléPomme Nancy</div>
+	</div>
 
   </body>
 </html>

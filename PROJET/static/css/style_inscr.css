@@ -197,12 +197,6 @@ body {
 	border-color:  #E9FABC #E9FABC green #E9FABC;
 }
 
-.email_textbox:focus{
-	border: solid 2px;
-	border-color:  #E9FABC #E9FABC green #E9FABC;
-	color: black;
-}
-
 .user_phone_label{
 	position: relative;
 	top: 280px;

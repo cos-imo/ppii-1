@@ -5,25 +5,12 @@
 
 
 body {
-    width: 500px;
-    height: 1400px;
+    width: 100vw;
+    height: 100vh;
     margin: 0 auto;
     padding: 0px 20px 20px;
-    background: #E9FABC;
-
-  }
-
-
-  
-
-.map {
-	position: relative;
-	top: 50px;
-	right: -675px;
-	width: 500px;
-	margin-top: 0;
-	background: #E9FABC;
-	padding: 10px;
+    /*background: #E9FABC;*/
+    background: no-repeat center/100% url("../../images/verger_1.jpg")
 }
 
 .menu_util{
@@ -118,62 +105,133 @@ body {
 	border-color: white;
 }
 
-.stats{
-	position: absolute;
-	font-size: 85px;
-	top:70px;
-	right: 550px;
-	font-family: farmer, serif;
+
+.container{
+	height:100%;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
-.stat_info{
-	position: absolute;
-	right: 550px;
-	top: 155px;
-	font-family: farmer, Helvetica, serif;
+.buttons{
+	display:flex;
+	flex-direction: column;
 }
 
-.stats2{
-	position: absolute;
-	font-size: 85px;
-	top:170px;
-	right: 550px;
-	font-family: farmer, serif;
+.btn{
+	text-decoration: none;
+	padding: 20px 50px;
+	font-size: 1.25rem;
+	position: relative;
+	margin: 32px;
+	order:2;
 }
 
-.stat_info2{
-	position: absolute;
-	right: 550px;
-	top: 255px;
-	font-family: farmer, Helvetica, serif;
+
+.inscription::before{
+	content: "\A";
+	white-space: pre;
 }
 
-.stats3{
-	position: absolute;
-	font-size: 85px;
-	top:270px;
-	right: 550px;
-	font-family: farmer, serif;
+.inscription{
+	margin-top: 0.25rem;
+	color:#FFF;
 }
 
-.stat_info3{
+.inscription::after, .inscription::before{
+	border: 3px solid #ABD664;
+	content: "";
 	position: absolute;
-	right: 550px;
-	top: 355px;
-	font-family: farmer, Helvetica, serif;
+	width: calc(200px - 6px);
+	height: calc(60px - 6px);
+	left: 0;
+	bottom: 0;
+	z-index: -1;
+	transition: transform 0.3s ease;
 }
 
-.stats4{
-	position: absolute;
-	font-size: 85px;
-	top:370px;
-	right: 550px;
-	font-family: farmer, serif
+.inscription:hover::after{
+	transform: translate(-5px, -5px);
 }
 
-.stat_info4{
+.inscription:hover::before{
+	transform: translate(5px,5px);
+}
+
+
+.espace_sous_titre_boutons{
+	height: 10vh;
+}
+
+.terminal_bg{
+	border: solid 10px black;
+	position: relative;
+	width: 2vw;
+	height: 2vh;
+}
+
+.annonce-container{
+/*	position: relative;*/
+	width: max-content;
+}
+
+
+.annonce-titre{
+	color:white;
+	font-size:5rem;
+	font-family: monospace;
+	position: relative;
+	order: 0;
+}
+
+.annonce-titre::before, .annonce-titre::after{
+	content: "";
 	position: absolute;
-	right: 550px;
-	top: 455px;
-	font-family: farmer, serif;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.annonce-titre::before{
+	background-color: black;
+	background-size: 100vw;
+	animation:  test 4s steps(15) forwards;
+}
+
+.sous-titre{
+	color: white;
+	font-size: 3vh;
+}
+
+@keyframes test{
+	to {
+		left: 100%;
+	}
+}
+
+.terminal_bg{
+	width: 10px;
+	height: 50px;
+	color: black;
+	z-index: 100;
+	border: 50px solid purple;
+}
+
+.logo_a_propos{
+	width: 2vw;
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	top: 92vh;
+	width: 100%;
+	text-align: center;
+	transition: transform .2s;
+}
+
+.footer:hover{
+	transform: scale(2);
 }
