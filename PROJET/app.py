@@ -9,14 +9,17 @@ app = Flask(__name__)
 
 DATABASE = 'project.db'
 
+
 def get_db():
-            
+
     db = getattr(g, '_database', None)
     if db is None:
         db = g._database = sqlite3.connect(DATABASE)
     return db
 
 # Cut the connection to the database
+
+
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)
@@ -24,6 +27,7 @@ def close_connection(exception):
         db.close()
 
 #####################################################################################################################
+
 
 @app.route('/style.css')
 def return_css():
@@ -33,32 +37,31 @@ def return_css():
 
 # Renders main page
 
+
 @app.route('/')
 def main():
-    r=get_db().cursor()
+    r = get_db().cursor()
     r.execute("SELECT body FROM messages")
-    return render_template('main.html',liste=r.fetchall())
+    return render_template('main.html', liste=r.fetchall())
 
 
 #####################################################################################################################
 
 
+# Renders insciption page
 
-
-#Renders insciption page
-
-@app.route("/inscription", methods=['GET','POST'])
+@app.route("/inscription", methods=['GET', 'POST'])
 def insc():
     msg = ''
     if request.method == 'POST' and request.form.get('first_name') and request.form.get('name'):
         print("ok")
         nom = request.form.get('first_name')
         prenom = request.form.get('name')
-        mdp=bytes(request.form.get('password'),'utf-8')
+        mdp = bytes(request.form.get('password'), 'utf-8')
         conn = get_db()
         cur = conn.cursor()
-        mass=hashlib.sha256(mdp).hexdigest()
-        cur.execute('INSERT INTO test VALUES(?,?)', (nom,mass))
+        mass = hashlib.sha256(mdp).hexdigest()
+        cur.execute('INSERT INTO test VALUES(?,?)', (nom, mass))
         conn.commit()
         conn.close()
     else:
@@ -68,19 +71,20 @@ def insc():
 
 #####################################################################################################################
 
-#Renders connection page
+# Renders connection page
 
 
-@app.route("/connexion", methods=['GET','POST'])
+@app.route("/connexion", methods=['GET', 'POST'])
 def connexion_page():
-    msg=''
+    msg = ''
     if request.method == 'POST' and request.form.get('name') and request.form.get('password'):
-         r = get_db().cursor()
-         nom=request.form.get('name')
-         r.execute("SELECT pass FROM test WHERE nom=?",(nom,))
-         print(r.fetchall())
+        r = get_db().cursor()
+        nom = request.form.get('name')
+        r.execute("SELECT pass FROM test WHERE nom=?", (nom,))
+        print(r.fetchall())
 
     return render_template("connexion.html")
+
 
 app.run(host='localhost', port=5000)
 
@@ -88,6 +92,7 @@ app.run(host='localhost', port=5000)
 @app.route("/images/verger_1.jpg")
 def renvoyer_bg():
     return send_file("ressources/images/verger_1.jpg")
+
 
 @app.route("/images/about")
 def renvoyer_about():
