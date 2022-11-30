@@ -1,0 +1,130 @@
+@font-face {
+	font-family: farmer;
+	src: url(farmer.ttf);
+}
+
+
+body {
+    width: 500px;
+    height: 1400px;
+    margin: 0 auto;
+    padding: 0px 20px 20px;
+    background: #E9FABC;
+
+  }
+
+
+  
+
+.map {
+	position: absolute;
+	top: 75px;
+	right: 0;
+	width: 500px;
+	margin-top: 0;
+	background: #E9FABC;
+	padding: 10px;
+}
+
+.menu_util{
+	z-index: +9;
+	position : fixed;
+	top : 25px;
+	left: 175px;
+	text-decoration: none;
+	color: black;
+	font-size: 1.25vw;
+}
+
+.menu_util:hover{
+	position : fixed;
+	top : 25px;
+	border-style: solid;
+	border-color: #ABC664 #ABC664 green #ABC664;
+}
+
+.menu_prod{
+	z-index: +9;
+	position : fixed;
+	top : 25px;
+	left: 300px;
+	text-decoration: none;
+	color: black;
+	font-size: 1.25vw;
+}
+
+.menu_prod:hover{
+	position : fixed;
+	top : 25px;
+	border-style: solid;
+	border-color: #ABC664  #ABC664 green #ABC664;
+}
+
+.contact{
+	z-index: +9;
+	position : fixed;
+	top : 25px;
+	right: 0px;
+	text-decoration: none;
+	color: black;
+	font-size: 1.25vw;
+}
+
+.contact:hover{
+	position : fixed;
+	top : 25px;
+	border-style: solid;
+	border-color: #ABC664  #ABC664 green #ABC664;
+}
+
+.header {
+	z-index: +10;
+	position : fixed;
+	top: 0px;
+	left: 0px;
+	margin-top :0;
+	padding: 10px;
+	text-decoration: none;
+	color: black;
+	font-size: 2vw;	
+}
+
+.header:hover{
+	border-style: solid;
+	border-color: #ABC664  #ABC664 green #ABC664;
+}
+
+.box_header{
+	position: fixed;
+	z-index: +5;
+	left:0px;
+	top:0px;
+	width: 100vw;
+	height: 75px;
+	color: black;
+	background-color: #ABC664;
+	border: 1px solid green;
+}
+
+.degrade{
+	z-index: +10;
+	position: fixed;
+	top: 73px;
+	left: -5px;
+	background: linear-gradient(to right, white, 3%, lime, 15%,  green, 75%, lime, 97%, white);
+	width: 100vw;
+	height: 2px;
+	border-style: solid;
+	border-color: white;
+}
+
+.msg_bienvenue{
+	position: absolute;
+	top: 75px;
+	left: 0;
+	font-size: 2vw;
+}
+.commande{
+	position: absolute;
+	top: 100px;
+}

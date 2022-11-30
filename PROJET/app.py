@@ -82,9 +82,6 @@ def connexion_page():
 
     return render_template("connexion.html")
 
-app.run(host='localhost', port=5000)
-
-
 @app.route("/images/verger_1.jpg")
 def renvoyer_bg():
     return send_file("ressources/images/verger_1.jpg")
@@ -92,3 +89,13 @@ def renvoyer_bg():
 @app.route("/images/about")
 def renvoyer_about():
     return send_file("ressources/images/about_logo")
+
+@app.route("/utilisateur/dashboard")
+def renvoyer_dashboard_util():
+    return render_template("dashboard_util.html")
+
+@app.route("/producteur/dashboard")
+def renvoyer_prod(nom="Monsieur/Madame", id=3):
+    r=get_db().cursor()
+    r.execute("SELECT * FROM commande WHERE id={}".format(id))
+    return render_template("dashboard_prod.html", nom=nom, commandes=r.fetchall())
