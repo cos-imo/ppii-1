@@ -91,8 +91,13 @@ def renvoyer_about():
     return send_file("ressources/images/about_logo")
 
 @app.route("/utilisateur/dashboard")
-def renvoyer_dashboard_util():
-    return render_template("dashboard_util.html")
+def renvoyer_dashboard_util(id =3):
+    r=get_db().cursor()
+    r.execute("SELECT * FROM commande WHERE id={}".format(id))
+    r2=get_db().cursor()
+    r2.execute("SELECT photo FROM produits WHERE id={}".format(id))
+    print(r2.fetchall())
+    return render_template("dashboard_util.html", liste_commandes=r.fetchall(), photo=r2.fetchall())
 
 @app.route("/producteur/dashboard")
 def renvoyer_prod(nom="Monsieur/Madame", id=3):
