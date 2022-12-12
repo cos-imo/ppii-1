@@ -1,4 +1,5 @@
 from flask import *
+from flask import session
 import sqlite3
 import hashlib
 
@@ -8,6 +9,8 @@ app = Flask(__name__)
 # DB gestion
 
 DATABASE = 'project.db'
+app.config['SESSION_TYPE'] = 'filesystem'
+app.secret_key="anystringhere"
 
 def get_db():
             
@@ -50,17 +53,23 @@ def main():
 @app.route("/inscription", methods=['GET','POST'])
 def insc():
     msg = ''
-    if request.method == 'POST' and request.form.get('first_name') and request.form.get('name'):
-        print("ok")
+    if request.method == 'POST' and request.form.get('first_name') and request.form.get('name') and request.form.get('password') and request.form.get('password')==request.form.get('password2'):
+        rid=get_db().cursor()
+        rid.execute("SELECT MAX(id) FROM utilisateurs")
+        new_id=rid.fetchall()[0][0]+1
         nom = request.form.get('first_name')
         prenom = request.form.get('name')
+        adresse_mail=request.form.get('email')
+        num_de_tel=request.form.get('phone_number')
         mdp=bytes(request.form.get('password'),'utf-8')
         conn = get_db()
         cur = conn.cursor()
         mass=hashlib.sha256(mdp).hexdigest()
-        cur.execute('INSERT INTO test VALUES(?,?)', (nom,mass))
+        cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?)', (new_id,prenom,nom,adresse_mail,num_de_tel,mass))
         conn.commit()
         conn.close()
+        session["id_utilisateur"]=new_id
+        redirect("/producteur/dashboard")
     else:
         print('please fill out the form')
     return render_template('inscription.html')
@@ -77,8 +86,9 @@ def connexion_page():
     if request.method == 'POST' and request.form.get('name') and request.form.get('password'):
          r = get_db().cursor()
          nom=request.form.get('name')
-         r.execute("SELECT pass FROM test WHERE nom=?",(nom,))
+         r.execute("SELECT motdepasse FROM utilisateurs WHERE nom=?",(nom,))
          print(r.fetchall())
+
 
     return render_template("connexion.html")
 
