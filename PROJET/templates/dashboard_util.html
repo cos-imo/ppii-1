@@ -18,7 +18,7 @@
   <div class="resume-commande-container">
       <a class="titre-commande"><h1>Votre prochaine commande</h1></a>
       {% for element in liste_commandes %}
-        <img src={{element[5]}}>
+        <img src={{photo[0][0]}} class="commande-photo">
         <h1 class="commande">{{ element[4] }}€</h1>
       {% endfor %}
   </div>

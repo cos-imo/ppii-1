@@ -86,17 +86,20 @@ def connexion_page():
 def renvoyer_bg():
     return send_file("ressources/images/verger_1.jpg")
 
+@app.route("/images/<produit>")
+def renvoyer_produit(produit):
+    return send_file("ressources/icons/{}.png".format(produit))
+
 @app.route("/images/about")
 def renvoyer_about():
     return send_file("ressources/images/about_logo")
 
 @app.route("/utilisateur/dashboard")
-def renvoyer_dashboard_util(id =3):
+def renvoyer_dashboard_util(id1 =3, id2=1):
     r=get_db().cursor()
-    r.execute("SELECT * FROM commande WHERE id={}".format(id))
+    r.execute("SELECT * FROM commande WHERE id={}".format(id1))
     r2=get_db().cursor()
-    r2.execute("SELECT photo FROM produits WHERE id={}".format(id))
-    print(r2.fetchall())
+    r2.execute("SELECT photo FROM produits WHERE id={}".format(id2))
     return render_template("dashboard_util.html", liste_commandes=r.fetchall(), photo=r2.fetchall())
 
 @app.route("/producteur/dashboard")
