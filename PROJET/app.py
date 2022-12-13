@@ -72,7 +72,7 @@ def insc():
         conn.commit()
         conn.close()
         session["id_utilisateur"]=new_id
-        redirect(url_for("renvoyer_dashboard_util"))
+        return redirect(url_for("renvoyer_dashboard_util"))
     elif request.method == 'POST' and request.form.get('first_name') and request.form.get('name') and request.form.get('password'):
         print("Passwords not matching")
     else:
@@ -91,8 +91,15 @@ def connexion_page():
     if request.method == 'POST' and request.form.get('name') and request.form.get('password'):
          r = get_db().cursor()
          nom=request.form.get('name')
+         mdp=bytes(request.form.get('password'),'utf-8')
+         mass=hashlib.sha256(mdp).hexdigest()
          r.execute("SELECT motdepasse FROM utilisateurs WHERE nom=?",(nom,))
-         print(r.fetchall())
+         tuple=r.fetchall()
+         if tuple[0][0]==mass:
+            print("connected")
+            return redirect(url_for("renvoyer_dashboard_util"))
+         else:
+            print("Connection failed")
 
 
     return render_template("connexion.html")
