@@ -65,11 +65,16 @@ def insc():
         conn = get_db()
         cur = conn.cursor()
         mass=hashlib.sha256(mdp).hexdigest()
-        cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?)', (new_id,prenom,nom,adresse_mail,num_de_tel,mass))
+        if request.form.get('prod'):
+            cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?,?)', (new_id,prenom,nom,adresse_mail,num_de_tel,mass,2))
+        else:
+            cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?,?)', (new_id,prenom,nom,adresse_mail,num_de_tel,mass,1))
         conn.commit()
         conn.close()
         session["id_utilisateur"]=new_id
-        redirect("/producteur/dashboard")
+        redirect(url_for("renvoyer_dashboard_util"))
+    elif request.method == 'POST' and request.form.get('first_name') and request.form.get('name') and request.form.get('password'):
+        print("Passwords not matching")
     else:
         print('please fill out the form')
     return render_template('inscription.html')
@@ -105,12 +110,17 @@ def renvoyer_about():
     return send_file("ressources/images/about_logo")
 
 @app.route("/utilisateur/dashboard")
-def renvoyer_dashboard_util(id1 =3, id2=1):
-    r=get_db().cursor()
-    r.execute("SELECT * FROM commande WHERE id={}".format(id1))
-    r2=get_db().cursor()
-    r2.execute("SELECT photo FROM produits WHERE id={}".format(id2))
-    return render_template("dashboard_util.html", liste_commandes=r.fetchall(), photo=r2.fetchall())
+def renvoyer_dashboard_util():
+    if "id_utilisateur" in session:
+        id=session["id_utilisateur"]
+        r=get_db().cursor()
+        r.execute("SELECT * FROM commande WHERE id_util={}".format(id))
+        print(r.fetchall())
+        r2=get_db().cursor()
+        r2.execute("SELECT photo FROM produits WHERE id={}".format(id))
+        return render_template("dashboard_util.html", liste_commandes=r.fetchall(), photo=r2.fetchall())
+    else:
+        return render_template("connexion.html")
 
 @app.route("/producteur/dashboard")
 def renvoyer_prod(nom="Monsieur/Madame", id=3):
