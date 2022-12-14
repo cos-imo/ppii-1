@@ -114,6 +114,11 @@ body {
 	justify-content: center;
 }
 
+.logo-telepomme{
+	width: 30vw;
+	height: 30vh;
+}
+
 .buttons{
 	display:flex;
 	flex-direction: column;
@@ -166,9 +171,20 @@ body {
 
 .terminal_bg{
 	border: solid 10px black;
+	color: black;
 	position: relative;
 	width: 2vw;
 	height: 2vh;
+}
+
+
+.color-box {
+	position: absolute;
+	z-index: -10;
+	float:left;
+	background-color:#000;
+	width: 725px;
+	height: 100px;
 }
 
 .annonce-container{
@@ -194,6 +210,10 @@ body {
 	bottom: 0;
 }
 
+.annonce-titre::after{
+	Cursor 500ms steps(40) infinite normal;
+}
+
 .annonce-titre::before{
 	background-color: black;
 	background-size: 100vw;
@@ -211,12 +231,12 @@ body {
 	}
 }
 
-.terminal_bg{
-	width: 10px;
-	height: 50px;
-	background: b;
-	z-index: 100;
-	border: 50px solid purple;
+@keyframes Cursor{
+	from{
+		border-right-color: rgba(255,255,255,0.75);
+	} to {
+		border-right-color: transparent;
+	}
 }
 
 .logo_a_propos{

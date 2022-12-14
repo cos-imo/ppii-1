@@ -96,6 +96,10 @@ def connexion_page():
          r.execute("SELECT motdepasse FROM utilisateurs WHERE nom=?",(nom,))
          tuple=r.fetchall()
          if tuple[0][0]==mass:
+            r = get_db().cursor()
+            r.execute("SELECT id FROM utilisateurs WHERE nom=?",(nom,))
+            tuple=r.fetchall()[0][0]
+            session["id_utilisateur"]=tuple
             print("connected")
             return redirect(url_for("renvoyer_dashboard_util"))
          else:
@@ -122,15 +126,36 @@ def renvoyer_dashboard_util():
         id=session["id_utilisateur"]
         r=get_db().cursor()
         r.execute("SELECT * FROM commande WHERE id_util={}".format(id))
-        print(r.fetchall())
+        liste_commandes_tuple=r.fetchall()
+        lst_photo=[]
+        a_payer=0
+        for element in liste_commandes_tuple:
+            lst_photo.append(element[1])
+            a_payer+=element[4]
+        rphoto=get_db().cursor()
+        photos=[]
+        for e in lst_photo:
+            rphoto.execute("SELECT photo from produits where id={}".format(e))
+            val=rphoto.fetchall()
+            photos.append(val[0][0])
         r2=get_db().cursor()
         r2.execute("SELECT photo FROM produits WHERE id={}".format(id))
-        return render_template("dashboard_util.html", liste_commandes=r.fetchall(), photo=r2.fetchall())
+        rnom=get_db().cursor()
+        rnom.execute("SELECT Prenom FROM utilisateurs WHERE id={}".format(id))
+        nom=rnom.fetchall()[0][0]
+        return render_template("dashboard_util.html", nom=nom, liste_commandes=liste_commandes_tuple, photo=photos, total=a_payer)
     else:
         return render_template("connexion.html")
 
 @app.route("/producteur/dashboard")
-def renvoyer_prod(nom="Monsieur/Madame", id=3):
-    r=get_db().cursor()
-    r.execute("SELECT * FROM commande WHERE id={}".format(id))
-    return render_template("dashboard_prod.html", nom=nom, commandes=r.fetchall())
+def renvoyer_prod(id=3):
+    if "id_utilisateur" in session:
+        id=session["id_utilisateur"]
+        r=get_db().cursor()
+        r.execute("SELECT * FROM commande WHERE id={}".format(id))
+        rnom=get_db().cursor()
+        rnom.execute("SELECT Prenom FROM utilisateurs WHERE id={}".format(id))
+        nom=rnom.fetchall()[0][0]
+        return render_template("dashboard_prod.html", nom=nom, commandes=r.fetchall())
+    else:
+        return(redirect(url_for("connexion")))

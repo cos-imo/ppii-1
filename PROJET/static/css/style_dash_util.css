@@ -141,6 +141,23 @@ body {
 	left: 10px;;
 }
 
+.total{
+	position: absolute;
+	top:35px;
+	left: 1000px;
+}
+
+.container-photo{
+  grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px; 
+  column-gap: 10px;
+  row-gap: 15px;
+}
+
+.item-logo{
+	justify-self: stretch;
+}
+
 .commande-photo{
 	width: 5vw;
 	transition: transform .2s;
