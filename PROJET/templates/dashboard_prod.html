@@ -15,11 +15,35 @@
 {% block content %}
   <a class="msg_bienvenue">Bienvenue, {{ nom }}!</a>
 
-  {% for i in nbcommandes %}
-    <h1 class="commande">Vous devez apporter l'item{{ element[1] }}</h1>
-  {% endfor %}
+  <div class="resume-commande-container">
+      <a class="titre-commande"><h1>Vos prochaine(s) commande(s)</h1></a><a class="total"> Total: {{total}}€</a>
+      {% if not liste_commandes %}
+        <h1 class="commande">Pas de commande!</h1>
+      {% endif %}
+      <a class="logo-container">
+        <a class="item-logo">
+          {% for element in liste_commandes %}
+            <img src={{photo[liste_commandes.index(element)]}} class="commande-photo">
+            <h1 class="commande">{{ element[4] }}€</h1>
+          {% endfor %}
+        </a>
+      </a>
+  </div>
 
+  <div class="ajout-produits-container">
+      <a class="titre-ajout"><h1>Vos produits</h1></a>
+      <img src="/images/logo-ajout" class="logo-ajout">
+      <a class="logo-container">
+        <a class="item-logo">
+          {% for element in liste_produits %}
+            <img src={{element[2]}} class="commande-photo">
+            <h1 class="commande">{{ element[4] }}€</h1>
+          {% endfor %}
+        </a>
+      </a>
+  </div>
 {% endblock%}
+
 	<div class="box_header"></div>
 	
 	<div class="degrade"></div>

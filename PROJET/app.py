@@ -74,10 +74,8 @@ def insc():
         session["id_utilisateur"]=new_id
         return redirect(url_for("renvoyer_dashboard_util"))
     elif request.method == 'POST' and request.form.get('first_name') and request.form.get('name') and request.form.get('password'):
-        print("Passwords not matching")
-    else:
-        print('please fill out the form')
-    return render_template('inscription.html')
+        msg="Les mots de passe ne correspondent pas"
+    return render_template('inscription.html',message=msg)
 
 
 #####################################################################################################################
@@ -100,12 +98,18 @@ def connexion_page():
             r.execute("SELECT id FROM utilisateurs WHERE nom=?",(nom,))
             tuple=r.fetchall()[0][0]
             session["id_utilisateur"]=tuple
+            rsession=get_db().cursor()
+            rsession.execute("SELECT statut FROM utilisateurs WHERE id={}".format(session["id_utilisateur"]))
+            session_type=rsession.fetchall()[0][0]
+            if session_type==1:
+                return redirect(url_for("renvoyer_dashboard_util"))
+            elif session_type==2:
+                return redirect(url_for("renvoyer_prod"))
             print("connected")
+
             return redirect(url_for("renvoyer_dashboard_util"))
          else:
             print("Connection failed")
-
-
     return render_template("connexion.html")
 
 @app.route("/images/verger_1.jpg")
@@ -148,7 +152,7 @@ def renvoyer_dashboard_util():
         return render_template("connexion.html")
 
 @app.route("/producteur/dashboard")
-def renvoyer_prod(id=3):
+def renvoyer_prod():
     if "id_utilisateur" in session:
         id=session["id_utilisateur"]
         r=get_db().cursor()
@@ -156,6 +160,10 @@ def renvoyer_prod(id=3):
         rnom=get_db().cursor()
         rnom.execute("SELECT Prenom FROM utilisateurs WHERE id={}".format(id))
         nom=rnom.fetchall()[0][0]
-        return render_template("dashboard_prod.html", nom=nom, commandes=r.fetchall())
+        rliste_produits=get_db().cursor()
+        rliste_produits.execute("SELECT * FROM produits WHERE producteur={}".format(session["id_utilisateur"]))
+        tuple=rliste_produits.fetchall()
+        print(tuple)
+        return render_template("dashboard_prod.html", nom=nom, commandes=r.fetchall(), liste_produits=tuple)
     else:
         return(redirect(url_for("connexion")))

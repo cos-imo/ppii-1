@@ -12,6 +12,10 @@
 	<a class="menu_util" href="utlisateur.html">Utilisateur</a>
 	<a class="menu_prod" href="producteur.html">Producteur</a>
 
+	<div class="box_header"></div>
+	
+	<div class="degrade"></div>
+
 {% block content %}
   <a class="msg_bienvenue">Bienvenue, {{ nom }}!</a>
 
@@ -29,11 +33,18 @@
         </a>
       </a>
   </div>
-
+  <div class="commande-container">
+      <a class="titre-commande"><h1>Commandez!</h1></a><a class="total"> Total: {{total}}€</a>
+      <div class="logo-container">
+        <div class="item-logo">
+          {% for element in liste_suggestions %}
+            <img src={{photo[liste_commandes.index(element)]}} class="commande-photo"/>
+            <span class="commande">{{ element[4] }}€</span>
+          {% endfor %}
+        <div>
+      </div>
+  </div>
 {% endblock%}
-	<div class="box_header"></div>
-	
-	<div class="degrade"></div>
 
 	</body>
 </html>

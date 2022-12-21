@@ -295,3 +295,9 @@ body {
 	color: green;
 	border-color: green;
 }
+
+.message{
+	position: absolute;
+	top:100px;
+	color: red;
+}

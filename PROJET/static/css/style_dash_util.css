@@ -166,3 +166,8 @@ body {
 .commande-photo:hover{
 	transform: scale(1.5);
 }
+
+.item-logo{
+	display: flex;
+	flex-direction: row;
+}
