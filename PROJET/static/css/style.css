@@ -1,6 +1,6 @@
 @font-face {
-	font-family: farmer;
-	src: url(farmer.ttf);
+	font-family: bebasneue;
+	src: url(bebasneue.ttf);
 }
 
 
@@ -10,14 +10,15 @@ body {
     margin: 0 auto;
     padding: 0px 20px 20px;
     /*background: #E9FABC;*/
-    background: no-repeat center/100% url("../images/verger_1.jpg")
+    background: no-repeat center/100% url("../images/verger_1.png")
 }
 
 .menu_util{
 	z-index: +9;
 	position : fixed;
 	top : 25px;
-	left: 175px;
+	left: 300px;
+	width:300px;
 	text-decoration: none;
 	color: black;
 	font-size: 1.25vw;
@@ -35,6 +36,7 @@ body {
 	position : fixed;
 	top : 25px;
 	left: 300px;
+	width: 300px;
 	text-decoration: none;
 	color: black;
 	font-size: 1.25vw;
@@ -195,7 +197,7 @@ body {
 }
 
 .annonce-titre::before{
-	background-color: black;
+	background-color: rgb(33, 63, 22);
 	background-size: 100vw;
 	animation:  test 4s steps(15) forwards;
 }
@@ -224,6 +226,7 @@ body {
 }
 
 .footer {
+	color: white;
 	position: fixed;
 	left: 0;
 	top: 92vh;
@@ -233,5 +236,5 @@ body {
 }
 
 .footer:hover{
-	transform: scale(2);
+	transform: scale(1.25);
 }

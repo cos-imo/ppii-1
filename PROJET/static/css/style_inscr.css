@@ -1,6 +1,6 @@
 @font-face {
-	font-family: farmer;
-	src: url(farmer.ttf);
+	font-family: bebasneue;
+	src: url(bebasneue.ttf);
 }
 
 
@@ -289,4 +289,5 @@ body {
 	border-radius: 8px;
 	color: green;
 	border-color: green;
+	font-size: 20px;
 }
