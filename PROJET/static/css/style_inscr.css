@@ -281,6 +281,11 @@ body {
 	color: black;
 }
 
+.prod{
+	position: relative;
+	top: 450px;
+}
+
 
 .submit_btn{
 	position: relative;
@@ -290,4 +295,10 @@ body {
 	color: green;
 	border-color: green;
 	font-size: 20px;
+}
+
+.message{
+	position: absolute;
+	top:100px;
+	color: red;
 }

@@ -1,6 +1,6 @@
 @font-face {
-	font-family: bebasneue;
-	src: url(bebasneue.ttf);
+	font-family: farmer;
+	src: url(farmer.ttf);
 }
 
 
@@ -10,12 +10,16 @@ body {
     margin: 0 auto;
     padding: 0px 20px 20px;
     background: #E9FABC;
+
   }
 
+
+  
+
 .map {
-	position: relative;
-	top: 50px;
-	right: -675px;
+	position: absolute;
+	top: 75px;
+	right: 0;
 	width: 500px;
 	margin-top: 0;
 	background: #E9FABC;
@@ -114,69 +118,56 @@ body {
 	border-color: white;
 }
 
-.username_label{
-	position: relative;
+.msg_bienvenue{
+	position: absolute;
+	top: 75px;
+	left: 0;
+	font-size: 2vw;
+}
+.commande{
+	position: absolute;
+	top: 100px;
+}
+
+.resume-commande-container{
+	position: absolute;
 	top: 150px;
-	font-size: 1.5vw;
+	left: 50px;
 }
 
-.name_textbox{
+.commande{
 	position: relative;
-	top: 175px;
-	text-align: center;
-	background-color: #E9FABC;
-	border: none;
-	color:black;
-	outline: none;
-	font-size:1.125vw;
+	top: 0;
+	left: 10px;;
 }
 
-.name_textbox:focus{
-	border: solid 2px;
-	border-color:  #E9FABC #E9FABC green #E9FABC;
-	color: black;
+.total{
+	position: absolute;
+	top:35px;
+	left: 1000px;
 }
 
-.name_textbox:hover{
-	border: solid 2px;
-	border-color:  #E9FABC #E9FABC green #E9FABC;
-	color: black;
+.container-photo{
+  grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px; 
+  column-gap: 10px;
+  row-gap: 15px;
 }
 
-.user_password_label{
-	position: relative;
-	top: 200px;
-	font-size:1.5vw;
+.item-logo{
+	justify-self: stretch;
 }
 
-.password_textbox{
-	position: relative;
-	top: 225px;
-	background-color: #E9FABC;
-	text-align: center;
-	border: none;
-	outline: none;
-	font-size:1.125vw;
+.commande-photo{
+	width: 5vw;
+	transition: transform .2s;
 }
 
-.password_textbox:focus{
-	color:black;
-	border: solid 2px;
-	border-color:  #E9FABC #E9FABC green #E9FABC;
+.commande-photo:hover{
+	transform: scale(1.5);
 }
 
-.password_textbox:focus{
-	border: solid 2px;
-	border-color:  #E9FABC #E9FABC green #E9FABC;
-	color: black;
-}
-
-
-.submit_btn{
-	position: relative;
-	top: 475px;
-	background-color: #E9FABC;
-	border-radius: 8px;
-	color: green;
-	border-color: green;
+.item-logo{
+	display: flex;
+	flex-direction: row;
 }

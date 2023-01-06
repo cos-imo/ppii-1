@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="../static/css/style_dash_util.css" rel="stylesheet" type="text/css">
+    <title>Page d'accueil</title>
+  </head>
+  <body>
+    <a class=" header" href="main.html">Accueil</a>
+    <iframe class="map" src="https://www.google.com/maps/d/embed?mid=1BiD0rInZe-NK0B_7m78LcGhL0aOvT4I&ehbc=2E312F" width="600" height="450"></iframe>
+
+	<a class="menu_util" href="utlisateur.html">Utilisateur</a>
+	<a class="menu_prod" href="producteur.html">Producteur</a>
+
+	<div class="box_header"></div>
+	
+	<div class="degrade"></div>
+
+{% block content %}
+  <a class="msg_bienvenue">Bienvenue, {{ nom }}!</a>
+
+  <div class="resume-commande-container">
+      <a class="titre-commande"><h1>Votre prochaine commande</h1></a><a class="total"> Total: {{total}}€</a>
+      {% if not liste_commandes %}
+        <h1 class="commande">Vous n'avez rien commandé</h1>
+      {% endif %}
+      <a class="logo-container">
+        <a class="item-logo">
+          {% for element in liste_commandes %}
+            <img src={{photo[liste_commandes.index(element)]}} class="commande-photo">
+            <h1 class="commande">{{ element[4] }}€</h1>
+          {% endfor %}
+        </a>
+      </a>
+  </div>
+  <div class="commande-container">
+      <a class="titre-commande"><h1>Commandez!</h1></a><a class="total"> Total: {{total}}€</a>
+      <div class="logo-container">
+        <div class="item-logo">
+          {% for element in liste_suggestions %}
+            <img src={{photo[liste_commandes.index(element)]}} class="commande-photo"/>
+            <span class="commande">{{ element[4] }}€</span>
+          {% endfor %}
+        <div>
+      </div>
+  </div>
+{% endblock%}
+
+	</body>
+</html>
