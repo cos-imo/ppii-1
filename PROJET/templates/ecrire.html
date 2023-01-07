@@ -1,0 +1,29 @@
+<head>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<center>
+    {% if not tentenvoi or erreur %}
+    <div class="redac">
+        <form action="" method="POST">
+        Destinataire (pseudo exact):<br>
+        <input type="text" name="dest" value="{{ dest }}">
+        <br><br>
+        Objet :<br>
+        <input type="text" name="objet" value="{{ objet }}">
+        <br><br>
+        Message :<br>
+        <input type="text" name="corps" value="{{ corps }}">
+        <br><br>
+        <input type="submit" name="envoyer" value="Envoyer">
+        </form>
+        {% if erreur %}
+        <font color="darkred" size="4px"><b>Erreur :</b> {{ erreur }}</font>
+        {% endif %}
+    </div>
+    {% else %}
+        <font color="green" size="10px">Votre message a bien été envoyé.</font><br><br>
+        <input type="button" onclick="window.location.href='../messagerie/';" value="Revenir à la messagerie" />
+    {% endif %}
+</center>
+</body>
