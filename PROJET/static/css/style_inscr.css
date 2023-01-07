@@ -175,15 +175,42 @@ body {
 	color: black;
 }
 
+
+
+
+.user_pseudo_label{
+	position: relative;
+	top: 247px;
+	font-size:1.5vw;
+}
+
+.pseudo_textbox{
+	position: relative;
+	top: 260px;
+	background-color: #E9FABC;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size:1.125vw;
+}
+
+.pseudo_textbox:focus{
+	color:black;
+	border: solid 2px;
+	border-color:  #E9FABC #E9FABC green #E9FABC;
+}
+
+
+
 .user_email_label{
 	position: relative;
-	top: 237px;
+	top: 280px;
 	font-size:1.5vw;
 }
 
 .email_textbox{
 	position: relative;
-	top: 250px;
+	top: 300px;
 	background-color: #E9FABC;
 	text-align: center;
 	border: none;
@@ -199,13 +226,13 @@ body {
 
 .user_phone_label{
 	position: relative;
-	top: 280px;
+	top: 325px;
 	font-size:1.5vw;
 }
 
 .phone_textbox{
 	position: relative;
-	top: 300px;
+	top: 350px;
 	background-color: #E9FABC;
 	text-align: center;
 	border: none;
@@ -227,13 +254,13 @@ body {
 
 .user_password_label{
 	position: relative;
-	top: 325px;
+	top: 375px;
 	font-size:1.5vw;
 }
 
 .password_textbox{
 	position: relative;
-	top: 350px;
+	top: 400px;
 	background-color: #E9FABC;
 	text-align: center;
 	border: none;
@@ -255,13 +282,13 @@ body {
 
 .user_password2_label{
 	position: relative;
-	top: 375px;
+	top: 425px;
 	font-size:1.5vw;
 }
 
 .password2_textbox{
 	position: relative;
-	top: 400px;
+	top: 450px;
 	background-color: #E9FABC;
 	text-align: center;
 	border: none;
@@ -283,13 +310,13 @@ body {
 
 .prod{
 	position: relative;
-	top: 450px;
+	top: 500px;
 }
 
 
 .submit_btn{
 	position: relative;
-	top: 475px;
+	top: 525px;
 	background-color: #E9FABC;
 	border-radius: 8px;
 	color: green;

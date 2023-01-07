@@ -15,25 +15,7 @@
     <a class="menu_util" href="utlisateur.html">Utilisateur</a>
     <a class="menu_prod" href="producteur.html">Producteur</a>
 
-	<div class="box_header"></div>
-	
-	<div class="degrade"></div>
-	
-	<center>
-        <h1><a class="message">{{message}}</a></h1>
-	<form action="", method="post">
-	<a class="username_label">Nom</a>
-	<br>
-	<label>  
-		<input id="user_name" class="name_textbox" type="text" name="name" placeholder="Nom">
-	</label>
-	<br>
-	<a class="user_firstname_label">Prénom</a>
-	<br>
-	<label for="user_firstname"> 
-		<input id="user_firstname" class="firstname_textbox" type="text" name="first_name" placeholder="Prénom">
-	</label> 
-	<br>
+    <div class="box_header"></div>
 
     <div class="degrade"></div>
 
@@ -60,6 +42,19 @@
             type="text"
             name="first_name"
             placeholder="Prénom"
+          />
+        </label>
+        <br />
+
+        <a class="user_pseudo_label">Pseudonyme</a>
+        <br />
+        <label for="user_pseudo">
+          <input
+            id="user_pseudo"
+            class="pseudo_textbox"
+            type="text"
+            name="pseudo"
+            placeholder="Pseudonyme"
           />
         </label>
         <br />
@@ -117,14 +112,15 @@
         <br />
 
         <label for="producteur">
-                <input type="checkbox" class="prod" id="prod" name="prod"><a class="prod">Producteur?</a>
+          <input type="checkbox" class="prod" id="prod" name="prod" /><a
+            class="prod"
+            >Producteur?</a
+          >
         </label>
-        <br>
+        <br />
 
-	<input type="submit" class="submit_btn" value="S'inscrire">
-	
-	</form>
-	</center>
-
-	</body>
+        <input type="submit" class="submit_btn" value="S'inscrire" />
+      </form>
+    </center>
+  </body>
 </html>
