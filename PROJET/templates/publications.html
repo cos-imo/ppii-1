@@ -1,0 +1,33 @@
+<head>
+    <link href="../static/css/style_rs.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<center>
+    <div class="publi">
+        <h3>Publier</h3>
+        <form action="" method="POST">
+            <input type="text" name="message" class="messagepost"></input><br><br>
+            <input type="submit" value="Poster" name="submessage">
+        </form>
+    </div>
+    <br><br>
+    {% for publi in publis %}
+    <div class="publi" id="{{ publi.0 }}">
+    <i><font size="2px;">Par <b>{{ publi.4 }}</b> le {{ publi.2 }}</font></i>
+    <hr>
+    <font size="4px;">{{ publi.3 }}</font>
+    <hr>
+    <form action="#{{ publi.0 }}" method="POST">
+        <input type="text" name="messagecomm" placeholder="Commenter">
+        <input type="submit" value="Poster" name="subcomm">
+        <input type="hidden" name="postid" value="{{ publi.0 }}">
+    </form>
+    {% for comm in publi.5 %}
+        <font size="2px;"><span title="{{ comm.4 }} le {{ comm.3 }}"><u>{{ comm.4 }} :</u> {{ comm.2 }}</span></font>
+        <br>
+    {% endfor %}
+    </div>
+    <br>
+    {% endfor %}
+</center>
+</body>
