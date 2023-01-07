@@ -1,0 +1,39 @@
+<head>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<center>
+    <div class="bdr">
+        <form action="" method="POST">
+        <input type="submit" name="suppmsg" value="Supprimer le(s) message(s) sélectionné(s)"> <input type="button" onclick="window.location.href='../ecrire';" value="Ecrire un message" />
+        <hr>
+        {% for message in messages %}
+        <input type="checkbox" name="{{ message.0 }}">
+        {% if message.2 == 0 %}
+            <b><font color="darkred">[NON LU] </font></b>
+        {% endif %}
+        <b>{{ message.5 }}</b> le {{ message.4 }} - <a href="./{{ message.0 }}">{{ message.3 }}</a>
+        <hr>
+        {% endfor %}
+        </form>
+    </div>
+    {% if msgread %}
+        <br>
+        <div class="bdr">
+            {{ msgread.2 }} | De <b>{{ msgread.4 }}</b> le {{ msgread.3 }}
+            <hr>
+            {{ msgread.5 }}
+            <hr>
+            <form style="display: inline-block" action="../ecrire" method="POST">
+                <input type="hidden" name="objet" value="Re : {{ msgread.2 }}">
+                <input type="hidden" name="dest" value="{{ msgread.4 }}">
+                <input type="submit" name="repondre" value="Répondre">
+            </form>
+            <form style="display: inline-block" action="" method="POST">
+                <input type="hidden" name="readid" value="{{ msgread.0 }}">
+                <input type="submit" name="suppmsglecture" value="Supprimer ce message">
+            </form>
+        </div>
+    {% endif %}
+</center>
+</body>
