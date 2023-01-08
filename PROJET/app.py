@@ -138,9 +138,9 @@ def connexion_page():
     return render_template("connexion.html")
 
 
-@app.route("/images/verger_1.jpg")
+@app.route("/images/verger_1.png")
 def renvoyer_bg():
-    return send_file("ressources/images/verger_1.jpg")
+    return send_file("ressources/images/verger_1.png")
 
 
 @app.route("/images/<produit>")
@@ -294,3 +294,6 @@ def ecrire():
         else:
             erreur = "Le pseudo spécifié n'existe pas."
     return render_template('ecrire.html', objet=objet, dest=dest, corps=corps, erreur=erreur, tentenvoi=tentenvoi)
+
+
+app.run(host='localhost', port=5000)

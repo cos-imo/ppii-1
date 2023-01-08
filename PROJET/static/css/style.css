@@ -17,10 +17,9 @@ body {
 	z-index: +9;
 	position : fixed;
 	top : 25px;
-	left: 300px;
-	width:300px;
+	left: 175px;
 	text-decoration: none;
-	color: black;
+	color: white;
 	font-size: 1.25vw;
 }
 
@@ -35,10 +34,9 @@ body {
 	z-index: +9;
 	position : fixed;
 	top : 25px;
-	left: 300px;
-	width: 300px;
+	left: 325px;
 	text-decoration: none;
-	color: black;
+	color: white;
 	font-size: 1.25vw;
 }
 
@@ -117,8 +115,8 @@ body {
 }
 
 .logo-telepomme{
-	width: 30vw;
-	height: 30vh;
+	width:1000px;
+	height:500px;
 }
 
 .buttons{
