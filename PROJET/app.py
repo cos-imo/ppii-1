@@ -69,7 +69,7 @@ def main():
 #####################################################################################################################
 
 
-# Renders insciption page
+# Renders inscription page
 
 @app.route("/inscription", methods=['GET', 'POST'])
 def insc():
