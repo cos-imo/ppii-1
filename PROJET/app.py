@@ -75,29 +75,35 @@ def main():
 def insc():
     msg = ''
     if request.method == 'POST' and request.form.get('first_name') and request.form.get('name') and request.form.get('password') and request.form.get('password') == request.form.get('password2'):
-        rid = get_db().cursor()
+        rid = get_db().cursor()  # Curseur de l'id
+        # On récupère le plus grand id disponible
         rid.execute("SELECT MAX(id) FROM utilisateurs")
+        # On l'augmente de 1 pour bien avoir le plus grand indice
         new_id = rid.fetchall()[0][0]+1
+        # On récupère, dans les prochaines lignes, les données du formumlaire
         nom = request.form.get('first_name')
         prenom = request.form.get('name')
         pseudo = prenom = request.form.get('pseudo')
         adresse_mail = request.form.get('email')
         num_de_tel = request.form.get('phone_number')
         mdp = bytes(request.form.get('password'), 'utf-8')
-        conn = get_db()
+        conn = get_db()  # On créé une connexion pour l'insertion
         cur = conn.cursor()
+        # On calcule le hash du mot de passe
         mass = hashlib.sha256(mdp).hexdigest()
         if request.form.get('prod'):
             cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?,?,?)', (new_id,
-                        prenom, nom, adresse_mail, num_de_tel, mass, 2, pseudo))
+                        prenom, nom, adresse_mail, num_de_tel, mass, 2, pseudo))  # On insère ensuite le tout dans la base de données
         else:
             cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?,?,?)', (new_id,
                         prenom, nom, adresse_mail, num_de_tel, mass, 1, pseudo))
         conn.commit()
-        conn.close()
+        conn.close()  # On ferme la connection
+        # On enregistre dans session l'id actif
         session["id_utilisateur"] = new_id
         return redirect(url_for("renvoyer_dashboard_util"))
     elif request.method == 'POST' and request.form.get('first_name') and request.form.get('name') and request.form.get('password'):
+        # Si les mots de passe ne correspondent pas, on l'affiche  à l'écran
         msg = "Les mots de passe ne correspondent pas"
     return render_template('inscription.html', message=msg)
 
@@ -110,31 +116,38 @@ def insc():
 
 @app.route("/connexion", methods=['GET', 'POST'])
 def connexion_page():
+    # Si le formulaire est bien rempli...
     if request.method == 'POST' and request.form.get('name') and request.form.get('password'):
-        r = get_db().cursor()
-        nom = request.form.get('name')
+        r = get_db().cursor()  # On créé un curseur
+        nom = request.form.get('name')  # On récupère les données du formulaire
         mdp = bytes(request.form.get('password'), 'utf-8')
+        # On calcule le hash du mot de passe entré
         mass = hashlib.sha256(mdp).hexdigest()
+        # On récupère le hash de l'identifiant entré
         r.execute("SELECT motdepasse FROM utilisateurs WHERE pseudo=?", (nom,))
         tuple = r.fetchall()
-        if tuple[0][0] == mass:
+        if tuple[0][0] == mass:  # Si les deux correspondent...
             r = get_db().cursor()
-            r.execute("SELECT id FROM utilisateurs WHERE pseudo=?", (nom,))
+            r.execute("SELECT id FROM utilisateurs WHERE pseudo=?",
+                      (nom,))  # On récupère l'id
             tuple = r.fetchall()[0][0]
-            session["id_utilisateur"] = tuple
+            session["id_utilisateur"] = tuple  # Et on le stocke dans session
             rsession = get_db().cursor()
-            rsession.execute("SELECT statut FROM utilisateurs WHERE id={}".format(
+            rsession.execute("SELECT statut FROM utilisateurs WHERE id={}".format(  # On récupère le statut (utilisateur ou producteur)
                 session["id_utilisateur"]))
             session_type = rsession.fetchall()[0][0]
             if session_type == 1:
+                # On renvoie ensuite la page correspondante
                 return redirect(url_for("renvoyer_dashboard_util"))
             elif session_type == 2:
+                # On renvoie ensuite la page correspondante
                 return redirect(url_for("renvoyer_prod"))
             print("connected")
 
             return redirect(url_for("renvoyer_dashboard_util"))
         else:
             print("Connection failed")
+    # Si rien ne se passe (ou erreur) on recharge la même page
     return render_template("connexion.html")
 
 
