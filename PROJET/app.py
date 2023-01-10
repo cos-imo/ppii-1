@@ -168,25 +168,26 @@ def renvoyer_about():
 
 @app.route("/utilisateur/dashboard")
 def renvoyer_dashboard_util():
-    if "id_utilisateur" in session:
-        id = session["id_utilisateur"]
+    if "id_utilisateur" in session:  # On regarde si l'utilisateur est connecté
+        id = session["id_utilisateur"]  # Le cas échéant, on récupère l'id
         r = get_db().cursor()
+        # On récupère les commandes liées à l'id
         r.execute("SELECT * FROM commande WHERE id_util={}".format(id))
         liste_commandes_tuple = r.fetchall()
         lst_photo = []
         a_payer = 0
-        for element in liste_commandes_tuple:
+        for element in liste_commandes_tuple:  # On parcourt la liste des commandes
             lst_photo.append(element[1])
+            # Et à chaque itération on ajoute le prix de l'objet au prix total a payer
             a_payer += element[4]
         rphoto = get_db().cursor()
         photos = []
-        for e in lst_photo:
+        for e in lst_photo:  # On boucle ensuite pour récupérer les photos
             rphoto.execute("SELECT photo from produits where id={}".format(e))
             val = rphoto.fetchall()
-            photos.append(val[0][0])
-        r2 = get_db().cursor()
-        r2.execute("SELECT photo FROM produits WHERE id={}".format(id))
+            photos.append(val[0][0])  # Et on les ajoute à la liste 'photos'
         rnom = get_db().cursor()
+        # Enfin, on récupère le nom de l'utilisateur
         rnom.execute("SELECT Prenom FROM utilisateurs WHERE id={}".format(id))
         nom = rnom.fetchall()[0][0]
         return render_template("dashboard_util.html", nom=nom, liste_commandes=liste_commandes_tuple, photo=photos, total=a_payer)
@@ -196,21 +197,24 @@ def renvoyer_dashboard_util():
 
 @app.route("/producteur/dashboard")
 def renvoyer_prod():
-    if "id_utilisateur" in session:
-        id = session["id_utilisateur"]
+    if "id_utilisateur" in session:  # Si l'utilisateur est connecté
+        id = session["id_utilisateur"]  # On stocke l'id dans session
         r = get_db().cursor()
+        # On récupère les commandes
         r.execute("SELECT * FROM commande WHERE id={}".format(id))
         rnom = get_db().cursor()
+        # Et le prénom de l'utilisateur
         rnom.execute("SELECT Prenom FROM utilisateurs WHERE id={}".format(id))
         nom = rnom.fetchall()[0][0]
         rliste_produits = get_db().cursor()
         rliste_produits.execute(
-            "SELECT * FROM produits WHERE producteur={}".format(session["id_utilisateur"]))
+            "SELECT * FROM produits WHERE producteur={}".format(session["id_utilisateur"]))  # On récupère tout les produits du producteur
         tuple = rliste_produits.fetchall()
         print(tuple)
+        # On renvoie enfin la page associée
         return render_template("dashboard_prod.html", nom=nom, commandes=r.fetchall(), liste_produits=tuple)
     else:
-        return (redirect(url_for("connexion")))
+        return (redirect(url_for("connexion")))  # Sinon on recharge la page
 
 
 @app.route('/publications', methods=["GET", "POST"])
