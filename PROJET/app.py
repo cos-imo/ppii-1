@@ -381,9 +381,10 @@ def jardins():
             localisations = cur.fetchall()
 
             for l in localisations:
+                #Formule seervant à calculer la distance entre deux points de coordonnées GPS données :
                 dist = acos(sin(lat*pi/180)*sin(l[2]*pi/180)+cos(lat*pi/180)
                             * cos(l[2]*pi/180)*cos(l[3]*pi/180-lon*pi/180))*6371
-                if dist < 50:
+                if dist < 50: #Si la distance est inférieure à 50 km (circuit court, on peut éventuellement modifier cette valeur)
                     Ldist.append([l[0], l[1], round(dist, 2), l[2], l[3]])
 
     return render_template('jardins.html', Ldist=trifusiondist(Ldist), recherche=recherche, adresse=adresse)
