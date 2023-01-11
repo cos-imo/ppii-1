@@ -18,6 +18,8 @@ from flask import *
 from flask import session
 import sqlite3
 import hashlib
+import requests
+from math import *
 
 
 # Initialisation de l'application
@@ -92,11 +94,11 @@ def insc():
         # On calcule le hash du mot de passe
         mass = hashlib.sha256(mdp).hexdigest()
         if request.form.get('prod'):
-            cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?,?,?)', (new_id,
-                        prenom, nom, adresse_mail, num_de_tel, mass, 2, pseudo))  # On insère ensuite le tout dans la base de données
+            cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?,?,?,?,?)', (new_id,
+                        prenom, nom, adresse_mail, num_de_tel, mass, 2, pseudo, 0, 0))  # On insère ensuite le tout dans la base de données
         else:
-            cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?,?,?)', (new_id,
-                        prenom, nom, adresse_mail, num_de_tel, mass, 1, pseudo))
+            cur.execute('INSERT INTO utilisateurs VALUES(?,?,?,?,?,?,?,?,?,?)', (new_id,
+                        prenom, nom, adresse_mail, num_de_tel, mass, 1, pseudo, 0, 0))
         conn.commit()
         conn.close()  # On ferme la connection
         # On enregistre dans session l'id actif
@@ -236,7 +238,7 @@ def publications():
             cur.execute("INSERT INTO commentaires (postid, userid, commentaire, date) VALUES (?, ?, ?, datetime('now','localtime'))",
                         (request.form['postid'], userid, request.form['messagecomm']))
             conn.commit()
-    cur.execute("SELECT publications.id, posterid, strftime('%d/%m/%Y à %H:%M', date), message, pseudo FROM publications JOIN utilisateurs ON utilisateurs.id = posterid WHERE posterid IN (SELECT ? UNION SELECT following FROM follow WHERE follower = ?) ORDER BY publications.id DESC LIMIT 15", (userid, userid))
+    cur.execute("SELECT publications.id, posterid, strftime('%d/%m/%Y à %H:%M', date), message, pseudo FROM publications JOIN utilisateurs ON utilisateurs.id = posterid WHERE posterid IN (SELECT ? UNION SELECT following FROM follow WHERE follower = ?) ORDER BY publications.id DESC LIMIT 30", (userid, userid))
     # On récupère les publications qui doivent s'afficher sur le fil d'actualité de l'utilisateur
     publis = cur.fetchall()
     Lpublis = []  # Initialisation de la liste des publications avec ses commentaires
@@ -281,7 +283,7 @@ def messagerie(readid=0):
         cur.execute("SELECT messages.id, sender, subject, strftime('%d/%m/%Y à %H:%M', date), pseudo, body FROM messages JOIN utilisateurs ON utilisateurs.id = sender WHERE receiver = ? AND suppr = 0 AND messages.id = ? ORDER BY messages.id DESC", (userid, readid))
         # On récupère les données du message que l'utilisateur veut lire
         msgread = cur.fetchone()
-    cur.execute("SELECT messages.id, sender, read, subject, strftime('%d/%m/%Y à %H:%M', date), pseudo FROM messages JOIN utilisateurs ON utilisateurs.id = sender WHERE receiver = ? AND suppr = 0 ORDER BY messages.id DESC LIMIT 15", (userid,))
+    cur.execute("SELECT messages.id, sender, read, subject, strftime('%d/%m/%Y à %H:%M', date), pseudo FROM messages JOIN utilisateurs ON utilisateurs.id = sender WHERE receiver = ? AND suppr = 0 ORDER BY messages.id DESC", (userid,))
     messages = cur.fetchall()  # On récupère la boîte de réception de l'utilisateur
     return render_template('messagerie.html', messages=messages, msgread=msgread)
 
@@ -324,6 +326,67 @@ def ecrire():
             # Erreur si le pseudo entré ne correspond à aucun pseudo dans la base de données.
             erreur = "Le pseudo spécifié n'existe pas."
     return render_template('ecrire.html', objet=objet, dest=dest, corps=corps, erreur=erreur, tentenvoi=tentenvoi)
+
+
+def fusion(T1, T2):  # Sert à fusionner deux listes par ordre croissant
+    if T1 == []:
+        return T2
+    if T2 == []:
+        return T1
+    # On tient uniquement compte de la distance à l'adresse entrée (voir plus bas, /jardins), càd la case d'indice 2 du tableau
+    if T1[0][2] < T2[0][2]:
+        return [T1[0]]+fusion(T1[1:], T2)
+    else:
+        return [T2[0]]+fusion(T1, T2[1:])
+
+
+def trifusiondist(T):
+    if len(T) <= 1:
+        return T
+    T1 = [T[x] for x in range(len(T)//2)]
+    T2 = [T[x] for x in range(len(T)//2, len(T))]
+    return fusion(trifusiondist(T1), trifusiondist(T2))
+
+
+@app.route('/jardins', methods=["GET", "POST"])
+def jardins():
+    # On commence par initialiser les variables utiles :
+    recherche = False
+    Ldist = []
+    # Si l'adresse ne correspond à rien, on renvoie un erreur.
+    adresse = "L'adresse entrée n'a pas été trouvée."
+
+    if request.form.get('adresse') != None:  # Si l'utilisateur a entré une adresse
+        recherche = True
+        # On utilise l'API en JSON du gouvernement
+        url = 'https://api-adresse.data.gouv.fr/search/'
+
+        params = dict(
+            limit=1,  # On récupère seulement l'adresse qui correspond le mieux à l'adresse entrée
+            q=request.form['adresse']
+        )
+
+        resp = requests.get(url=url, params=params)
+        data = resp.json()
+        if len(data["features"]) != 0:  # Si on a un résultat
+            df = data["features"][0]
+            lat = df["geometry"]["coordinates"][1]
+            lon = df["geometry"]["coordinates"][0]
+            adresse = df["properties"]["label"]
+
+            conn = get_db()
+            cur = conn.cursor()
+            cur.execute(
+                "SELECT id, pseudo, latitude, longitude FROM utilisateurs WHERE statut = 2")  # On sélectionne les coordonnées des producteurs
+            localisations = cur.fetchall()
+
+            for l in localisations:
+                dist = acos(sin(lat*pi/180)*sin(l[2]*pi/180)+cos(lat*pi/180)
+                            * cos(l[2]*pi/180)*cos(l[3]*pi/180-lon*pi/180))*6371
+                if dist < 50:
+                    Ldist.append([l[0], l[1], round(dist, 2), l[2], l[3]])
+
+    return render_template('jardins.html', Ldist=trifusiondist(Ldist), recherche=recherche, adresse=adresse)
 
 
 app.run(host='localhost', port=5000)

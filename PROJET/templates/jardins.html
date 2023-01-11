@@ -1,0 +1,53 @@
+<head>
+  <link href="../static/css/style_rs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">
+    function masquer_div(id) {
+      if (document.getElementById(id).style.display == "none") {
+        document.getElementById(id).style.display = "block";
+      } else {
+        document.getElementById(id).style.display = "none";
+      }
+    }
+  </script>
+</head>
+<body>
+  <center>
+    <div class="redac">
+      <form action="" method="POST">
+        <input type="text" name="adresse" placeholder="Adresse" /><br /><br />
+        <input
+          type="submit"
+          name="Envoyer"
+          value="Trouver les producteurs à proximité"
+        />
+      </form>
+      {% if recherche %} <b>Adresse retenue :</b><br />
+      {{ adresse }}
+      <br /><br />
+      <hr />
+
+      {% for d in Ldist %}
+      <b>{{ d.1 }}</b> : {{ d.2 }} km
+      <br />
+      <input
+        type="button"
+        value="Afficher/masquer la carte"
+        onclick="masquer_div('carte_{{ d.0 }}');"
+      />
+      <div style="width: 100%; display: none" id="carte_{{ d.0 }}">
+        <iframe
+          width="720"
+          height="600"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://maps.google.com/maps?width=720&amp;height=600&amp;hl=fr&amp;q={{d.3}},{{d.4}}+({{d.1}})&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+          ><a href="https://www.gps.ie/golf-gps/">golf watches</a></iframe
+        >
+      </div>
+      <hr />
+      {% endfor %} {% endif %}
+    </div>
+  </center>
+</body>
