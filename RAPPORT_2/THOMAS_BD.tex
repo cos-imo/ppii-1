@@ -38,7 +38,7 @@ Dans cette partie, nous allons expliquer la construction de la base de données 
 
 \subsection{\color{cyan}Utilisateurs}
 
-Pour chaque inscription, nous demandons un nom, un prénom, un pseudonyme, une adresse e-mail, un numéro de téléphone, un mot de passe, et nous donnons le choix entre un compte producteur ou acheteur. Ces informations étant susceptibles de changer (changement ou erreur dans le nom par exemple), nous avons choisi d’identifier les comptes utilisateurs par un identifiant unique (un entier naturel) attribué automatiquement à l’inscription, et constituant donc notre clé primaire. Toutes ces données sont stockées dans la table “utilisateurs”. De cette manière, toutes les autres tables qui ont un rapport direct avec les utilisateurs peuvent les identifier tout en étant à l’abri d’éventuels changements dans les données des utilisateurs.
+Pour chaque inscription, nous demandons un nom, un prénom, un pseudonyme, une adresse e-mail, un numéro de téléphone, un mot de passe, le choix entre un compte producteur ou acheteur, et une adresse (latitude, longitude). Ces informations étant susceptibles de changer (changement ou erreur dans le nom par exemple), nous avons choisi d’identifier les comptes utilisateurs par un identifiant unique (un entier naturel) attribué automatiquement à l’inscription, et constituant donc notre clé primaire. Toutes ces données sont stockées dans la table “utilisateurs”. De cette manière, toutes les autres tables qui ont un rapport direct avec les utilisateurs peuvent les identifier tout en étant à l’abri d’éventuels changements dans les données des utilisateurs.
 
 \subsection{\color{lime}Vente de produits}
 
