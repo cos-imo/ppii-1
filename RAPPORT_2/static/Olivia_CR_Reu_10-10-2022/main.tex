@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage[left=3cm,right=3cm,bottom=3cm]{geometry}
+
+% À MODIFIER
+\newcommand{\setdate}{Lundi 10 Octobre 2022} % Format : Jour DD mois AAAA. Ex: Mercredi 14 octobre 2022
+
+\pagestyle{fancy}
+\lhead{Réunion du \setdate}
+
+% À MODIFIER EN FONCTION DU PROJET
+\rhead{PPII 1}
+
+\begin{document}
+    \input{front_page/front_page}
+    \newpage
+    \input{characteristics/characteristics}
+    \newpage
+    \input{content/content}
+    \newpage
+    \input{next_reunion/next_reunion}
+\end{document}
