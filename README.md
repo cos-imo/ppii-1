@@ -20,3 +20,37 @@ La présente application est ainsi une **plateforme permettant d'organiser la ve
 - AING Olivia
 - LERUEZ Thomas
 - UNGARO Cosimo
+
+### Installation
+##### Téléchargement
+###### Par SSH
+```
+git clone git@github.com:cos-imo/ppii-1.git
+```
+###### Par HTTP
+```
+git clone https://github.com/cos-imo/ppii-1.git
+```
+
+##### Activation de l'environnement virtuel
+**ATTENTION**: Le dépôt sur lequel vous vous trouvez est une copie d'un dépôt de travail GitLab. Ainsi de nombreux documents (ex. Gestion de Projet) se trouvent dans le dépôt. Le code se trouve dans le dossier **PROJET**. Les commandes données ci-dessous supposent que vous vous trouvez à la racine du projet (dossier ppii-1)
+
+```
+source PROJET/.venv/bin/activate
+```
+
+##### Installation des dépendances (optionnel)
+**Attention** à être dans le dossier YouTube-search
+```
+pip install -r PROJET/requirements.txt
+```
+
+##### Lancement
+Depuis la dossier contenant le code (dossier PROJET) exécuter:
+```
+flask run
+```
+Pour activer le débogueur:
+```
+flask run --debug
+```
