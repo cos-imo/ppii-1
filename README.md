@@ -36,11 +36,11 @@ git clone https://github.com/cos-imo/ppii-1.git
 **ATTENTION**: Le dépôt sur lequel vous vous trouvez est une copie d'un dépôt de travail GitLab. Ainsi de nombreux documents (ex. Gestion de Projet) se trouvent dans le dépôt. Le code se trouve dans le dossier **PROJET**. Les commandes données ci-dessous supposent que vous vous trouvez à la racine du projet (dossier ppii-1)
 
 ```
+python3 -m venv PROJET/.venv
 source PROJET/.venv/bin/activate
 ```
 
 ##### Installation des dépendances (optionnel)
-**Attention** à être dans le dossier YouTube-search
 ```
 pip install -r PROJET/requirements.txt
 ```
