@@ -21,7 +21,7 @@ La présente application est ainsi une **plateforme permettant d'organiser la ve
 - LERUEZ Thomas
 - UNGARO Cosimo
 
-### Installation
+## Installation
 ##### Téléchargement
 ###### Par SSH
 ```
