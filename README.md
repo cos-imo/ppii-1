@@ -7,12 +7,16 @@
 
 
 
+## Présentation
+
+Projet développé dans le cadre de ma scolarité à [Télécom Nancy](https://telecomnancy.univ-lorraine.fr) (1ère année - 1er semestre)
+Extrait du sujet:
+> Votre objectif est, [...] de concevoir et d’implémenter une application innovante dédiées à l’optimisation des ressources dans les vergers et potagers du territoire.
+
+La présente application est ainsi une **plateforme permettant d'organiser la vente en circuits-courts et/ou de particulier à particulier.**
+
 **Membres du groupe** :
 - VESSE Léo       (Chef de projet)
 - AING Olivia
 - LERUEZ Thomas
 - UNGARO Cosimo
-
-## Description du projet
-
-# À compléter
