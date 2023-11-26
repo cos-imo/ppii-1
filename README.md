@@ -1,6 +1,6 @@
 # Projet Pluridisciplinaire d'Informatique Intégrative - Semestre 1
 
-![Static Badge](https://img.shields.io/badge/Scolaire-TelecomNancy-purple)
+![Static Badge](https://img.shields.io/badge/Télécom-Projet_scolaire-purple)
 ![Static Badge](https://img.shields.io/badge/Backend-Python(Flask)-yellow)
 ![Static Badge](https://img.shields.io/badge/Frontend-HTML-orange)
 ![Static Badge](https://img.shields.io/badge/Frontend-CSS-purple)
