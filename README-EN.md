@@ -10,11 +10,11 @@
 
 ## Presentation
 
-This project was developped during my scholarship at [Télécom Nancy](https://telecomnancy.univ-lorraine.fr) (1st year - 1st semester).  
-Subject excerpt:
-> Your goal is [...] to conceive and implement an innovative application dedicated to resource's optimization within territory's orchard and gardens
+This project was developed during my curriculum at [Télécom Nancy](https://telecomnancy.univ-lorraine.fr) (1st year - 1st semester).  
+Here is an excerpt of the instructions:
+> Your goal is [...] to conceive and implement an innovative application dedicated to resource optimization in the orchards and gardens of the territory
 
-The current application is a **platform facilitating local food circuits and and/or vegetable's person to person sales**
+The current application is a **platform facilitating local food circuits and/or person to person sales of vegetables**
 
 **Group members**:
 - VESSE Léo       (Project's chief)
@@ -33,8 +33,8 @@ git clone git@github.com:cos-imo/ppii-1.git
 git clone https://github.com/cos-imo/ppii-1.git
 ```
 
-##### Activation de l'environnement virtuel
-**WARNING**: The current repository is a copy of the original working repository (that was hosted in my school's gitlab). That's why a lot of documents (such as Project Managemnt's one) are into the repository. The code is contained within **PROJET**'s folder. The command given below suppose that you are at the project's root (directory ppii-1)
+##### Virtual environment activation
+**WARNING**: The current repository is a copy of the original working repository (which was hosted in my school's gitlab). That's why a lot of documents (such as Project Management documents) are in the repository. The code is contained within the `PROJET` folder. The commands below must be useed within the project root folder (directory ppii-1)
 
 ```
 python3 -m venv PROJET/.venv
