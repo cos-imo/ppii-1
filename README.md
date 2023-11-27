@@ -6,7 +6,7 @@
 ![Static Badge](https://img.shields.io/badge/Frontend-CSS-purple)
 ![Static Badge](https://img.shields.io/badge/Base_de_donn%C3%A9es-sqlite3-blue)
 
-
+**Note**: This readme is also available in [english](https://github.com/cos-imo/ppii-1/blob/main/README-EN.md)
 
 ## Présentation
 
